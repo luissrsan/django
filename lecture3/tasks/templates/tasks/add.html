@@ -1,0 +1,23 @@
+
+It looks like you're trying to extend a base template and create a form for adding a task. However, there's an issue with the placement of your <form> tags. You've accidentally closed the <form> tag before adding the form elements.
+
+    Let me correct that for you:
+    
+    html
+    Copy
+    {% extends "tasks/layout.html" %}
+    
+    {% block body %}
+    <h1>Add Task</h1>
+    
+    <form action ="{% url 'tasks:add'%}" method="post">
+        {% csrf_token %}
+        <label for="task">Task Name:</label>
+        <input type="text" id="task" name="task" required>
+    
+        <input type="submit" value="Add Task"/>
+    </form>
+    
+    <a href="{% url 'tasks:index' %}">View Tasks</a>
+    
+    {% endblock %}
